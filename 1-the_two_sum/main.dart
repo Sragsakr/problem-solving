@@ -1,8 +1,11 @@
+import 'dart:math';
+
 void main() {
-  List<int> nums = [3, 2, 4];
+
+  List<int> nums = [3,3];
   int target = 6;
   // print(Solution().twoSum(nums, target));
-  print(Solution().twoSum(nums, target));
+  print(theTwoSum(nums, target));
 }
 
 class Solution {
@@ -33,7 +36,8 @@ class Solution {
   // }
     List<int> twoSum(List<int> nums, int target) {
     Map<int, int> map = {};
-
+    List<int> small=[];
+    if(small.isNotEmpty)
     for (int i = 0; i < nums.length; i++) {
       
       int complement = target - nums[i];
@@ -46,9 +50,23 @@ class Solution {
   } 
 }
 
+List<int> theTwoSum(List<int> numbers,int target ){
+  Map<int,int> hashMap={};
+  for(int i=0;i<numbers.length;i++){
+   int complement = target - numbers[i];
+   if(hashMap.containsKey(complement)){
+     return [hashMap[complement]!,i];
+   }
+   hashMap[numbers[i]]=i;
+  }
+  return [];
+
+}
+
 /// الفكره العامه ايه 
 /// بتاع ال hash map هيكون فيها العناصر اللي هتشوفها في ال array و ال index هيكون فيها 
 /// و بتاع ال complement هيكون فيها العنصر اللي هتشوفها في ال array و ال index هيكون فيها
 /// و بتاع ال i هيكون فيها ال index هيكون فيها
 /// و بتاع ال return هيكون فيها ال index هيكون فيها
 /// و بتاع ال return هيكون فيها ال index هيكون فيها
+
